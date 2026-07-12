@@ -110,15 +110,22 @@ export default function App() {
   const assignNoviceTeams = () => setNoviceTeams(makeTeams(noviceNames));
 
   return (
-    <div style={styles.page}>
+    <div style={styles.page} className="app-page">
+      <style>{`
+        @media (max-width: 600px) {
+          .app-page { padding: 28px 16px 60px !important; }
+          .app-title { font-size: 26px !important; }
+          .app-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
       <header style={styles.header}>
         <p style={styles.eyebrow}>Miagao Pickleball Club</p>
-        <h1 style={styles.title}>Challenger's Night</h1>
+        <h1 style={styles.title} className="app-title">Challenger's Night</h1>
         <div style={styles.kitchenLine} />
         <p style={styles.subtitle}>Random team maker</p>
       </header>
 
-      <section style={styles.grid}>
+      <section style={styles.grid} className="app-grid">
         <NameInput
           label="Beginner"
           names={beginnerNames}
@@ -131,7 +138,7 @@ export default function App() {
         />
       </section>
 
-      <section style={styles.grid}>
+      <section style={styles.grid} className="app-grid">
         <TeamDisplay
           label="Beginner"
           teams={beginnerTeams}
@@ -154,9 +161,11 @@ const styles = {
     minHeight: "100vh",
     background: "#F6F7F2",
     color: "#16241F",
-    fontFamily: "Arial, sans-serif",
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
     padding: "48px 24px 80px",
     maxWidth: 720,
+    width: "100%",
+    boxSizing: "border-box",
     margin: "0 auto",
   },
   header: {
